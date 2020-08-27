@@ -1,8 +1,8 @@
-title: Hacker-Blog
-description: "A Jekyll Blog Theme For Hackers"
+title: bongung-Blog
+description: 동아리 활동
 author:
-  name: "SomeHacker"
-  email: "someone@somewebsite.somedomain"
+  name: "bongung"
+  email: "over4654@naver.com"
   url: "https://bongung.github.io"
 
 baseurl: /
@@ -28,5 +28,5 @@ plugins:
   - jekyll-sitemap
 
 # Custom variables
-owner : "SomeHacker"
+owner : "bongung"
 year : "2020"
