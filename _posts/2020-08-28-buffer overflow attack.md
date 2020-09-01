@@ -75,3 +75,65 @@ Segment는 그림과 같은 구조를 하고있다.
    스텍은 나중에 들어간 데이터가 가장 먼저 나오는 LIFO의 구조이다. 
 
 ```
+* * *
+
+### 8086 CPU 레지스터 구조 
+
+* 레지스터(register)
+  -CPU가 흩어져 있는 명령어 집합과 데이터들을 적절하게 집어내고 읽고 저장하기 위해서는 여러 가지 공간이
+   필요하다. 또한 재빨리 읽고 쓰기를 해야 하는 데이터들이므로 CPU 내부에 존재하는 메모리를 사용한다. 
+   이러한 저장 공간을 레지스터(register)라고 한다.
+
+*레지스터의 종류*
+```
+
+1. 범용 레지스터 : 피연산자와, 메모리 포인터가 저장되는 레지스터다.
+
+   -프로그래머가 임의로 조작할 수 있게 허용되어 있다.
+   
+   1. EAX: 피연산자와 연산 결과의 저장소
+   2. EBX: DS segment안의 데이터를 가리키는 포인터
+   3. ECX: 문자열 처리나 루프를 위한 카운터
+   4. EDX: I/O 포인터
+   5. ESI: DS 레지스터가 가리키는 data segment 내의 어느 데이터를 가리키고 있는 포인터
+   6. EDI: ES 레지스터가 가리키고 있는 data segment 내의 어느 데이터를 가리키고 있는 포인터
+   7. ESP: SS 레지스터가 가리키는 stack segment의 맨 꼭대기를 가리키는 포인터
+   8. EBP: SS 레지스터가 가리키는 스텍상의 한 데이터를 가리키는 포인터
+
+
+2. 세그먼트 레지스터 : code segment, data segment, stack segment를 가리키는 주소가 들어 있다.
+
+   -CS 레지스터: code segment를 가리킴
+   -DS, ES, FS, GS 레지스터: data segment를 가리킴
+   -SS 레지스터: stack segment를 가리킴
+
+3. 플래그 레지스터 : 프로그램의 현재 상태나 조건 등을 검사하는데 사용되는 플래그들이 있다.
+
+    -Status flags(상태 플래그)
+      1.CF - carry flag
+      2.PF - parity flag
+      3.AF - adjust flag
+      4.ZF - zero flag
+      5.SF - sign flag
+      6.OF - overflow flag
+
+      DF - Direction flag
+
+    -System flags(시스템 플래그)
+      1.IF - interrupt enable flag
+      2.TF - trap flag
+      3.IOPL - I/O privelege level field
+      4.NT - nested task flag
+      5.RF - resume flag
+      6.VM - virtual-8086 mode flag
+      7.AC - alignment check flag 
+      8.VIF - vertual interrupt flag
+      9.VIP - virtual interrupt pending flag
+      10.ID - identification flag
+
+    -Instruction Pointer
+
+4. 인스트럭션 포인터: 다음 수행해야 하는 명령이 있는 메모리 상의 주소가 들어가 있다.
+
+```
+#### 프로그램 구동 시 Segment에서는 어떤 일이?
