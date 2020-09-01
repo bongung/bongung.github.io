@@ -136,4 +136,50 @@ Segment는 그림과 같은 구조를 하고있다.
 4. 인스트럭션 포인터: 다음 수행해야 하는 명령이 있는 메모리 상의 주소가 들어가 있다.
 
 ```
+* * *         
+
 #### 프로그램 구동 시 Segment에서는 어떤 일이?
+
+```
+ void function(int a, int b, int c){
+
+               char buffer1[15];
+               char buffer2[10];
+ }
+
+ void main(){
+               function(1,2,3);
+ }
+
+ ```
+
+ 위에처럼 간단한 프로그램을 만들고 컴파일을 해서 gdb로 이 프로그램을 어셈블리어로 보자.
+
+ 보고 대충 해석해보면 ebp를 넣어주고 esp를 ebp로 이동시켜주고 esp를 8byte 빼주고 and 연산을 해준뒤 
+
+ eax에 0x0값을 넣어주고 esp에 값에서 eax에 값만큼 빼주고 esp를 4byte만큼 빼주고 
+
+ 인자값 1, 2, 3을 넣어주고 call를 사용해서 0x80482f4 <fundtion> 을 수행해주고 
+
+ function()함수에서도 함수 프롤로그 수행해서 ebp, esp 위치를 잡아주고 esp를 40byte 빼준다.
+
+ 그리고 leave를 사용해서 함수 프롤로그 작업을 되돌리고 ret을 사용하여 main()함수 이전으로 돌아간다.
+
+ 이렇게 해석할 수 있다.
+
+ ```
+ 추가 설명
+
+ sub - 빼기
+ mov - 이동
+ push- 넣기 
+ call - 해당 명령 수행하기
+ and - and연산해주기
+ 
+ 그리고 function함수에서 esp를 40byte 빼주는 이유는 스텍은 16배수로 할당되기 때문에 buffer1에 16byte
+ buffer2에 16byte가 할당되게 된다. 그리고 dummy값이 8byte 할당되기 때문에 총 40byte가 확장되게된다.
+
+ ```
+
+ 
+
