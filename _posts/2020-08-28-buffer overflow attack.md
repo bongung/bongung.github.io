@@ -183,7 +183,7 @@ Segment는 그림과 같은 구조를 하고있다.
 
  * * *
 
- ##### buffer overflow의 이해 
+ #### buffer overflow의 이해 
 
     공격자는 버퍼가 넘칠 떄, 즉 버퍼에 데이터를 쓸 떄 원하는 코드를 넣을 수가 있다.
 
@@ -273,7 +273,7 @@ buffer overflow
 
 * * *
 
-###### eggshell 기법 
+#### eggshell 기법 
 
 환경변수를 만들어 환경 변수들의 크기가 늘어나게 되고 main함수의 base pointer는 그만큼 낮은 곳에 
 자리잡게 된다.
